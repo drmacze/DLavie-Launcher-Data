@@ -37,12 +37,15 @@ echo "    - mods/   → folder kerja Anda untuk bikin DLC baru"
 echo "    - template/ → contoh struktur mod"
 echo ""
 
-# Step 3: Download update_dlc.py
-echo "[3/6] Download update_dlc.py..."
+# Step 3: Download update_dlc.py + upload_game_data.py
+echo "[3/6] Download scripts..."
 curl -sL "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/termux-dlavie-dlc/bin/update_dlc.py" \
   -o "$WORK_DIR/bin/update_dlc.py"
-chmod +x "$WORK_DIR/bin/update_dlc.py"
+curl -sL "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/termux-dlavie-dlc/bin/upload_game_data.py" \
+  -o "$WORK_DIR/bin/upload_game_data.py"
+chmod +x "$WORK_DIR/bin/update_dlc.py" "$WORK_DIR/bin/upload_game_data.py"
 echo "  ✓ update_dlc.py downloaded"
+echo "  ✓ upload_game_data.py downloaded"
 echo ""
 
 # Step 4: Download template mod contoh
@@ -86,13 +89,16 @@ echo ""
 echo "[6/6] Buat wrapper command 'dlavie-dlc'..."
 cat > "$PREFIX/bin/dlavie-dlc" << 'WRAPPER_EOF'
 #!/data/data/com.termux/files/usr/bin/bash
-# Wrapper untuk update_dlc.py — supaya bisa dipanggil dari mana saja
+# Wrapper untuk update_dlc.py + upload_game_data.py
 # Usage:
-#   dlavie-dlc upload <mod_folder> <version> [--note "..."]
-#   dlavie-dlc list
-#   dlavie-dlc delete <mod_id> <version>
-#   dlavie-dlc new <mod_name>  (buat folder mod baru dari template)
-#   dlavie-dlc help
+#   dlavie-dlc upload <mod_folder> <version> [--note "..."]   Upload DLC mod baru
+#   dlavie-dlc list                                            List mod di manifest
+#   dlavie-dlc delete <mod_id> <version>                       Hapus versi mod
+#   dlavie-dlc new <ModName>                                   Buat folder mod baru
+#   dlavie-dlc upload-data <zip_file>                          Upload data inti FIFA 16
+#   dlavie-dlc upload-data <zip_file> --sceneassets            Upload sceneassets (optional)
+#   dlavie-dlc list-data                                       List asset data di release v26
+#   dlavie-dlc help                                            Tampilkan help
 
 WORK_DIR="/sdcard/dlavie-dlc"
 PYTHON=python
@@ -128,7 +134,6 @@ case "$1" in
     if [ -f "$WORK_DIR/template/cl.ini" ]; then
       cp "$WORK_DIR/template/cl.ini" "$MOD_DIR/cl.ini"
     fi
-    # Buat README sederhana
     cat > "$MOD_DIR/README.md" << EOF
 # $MOD_NAME
 
@@ -139,33 +144,52 @@ TODO: Deskripsi mod ini
 
 ## File yang Dimodifikasi
 - cl.ini
-
-## File yang Ditambahkan
-- data/flows/...
 EOF
     echo "✓ Folder mod baru dibuat: $MOD_DIR"
     echo ""
-    echo "Sekarang edit file di folder itu (pakai file manager atau text editor):"
+    echo "Edit file di folder itu (pakai file manager atau text editor):"
     echo "  $MOD_DIR"
     echo ""
     echo "Setelah selesai edit, upload dengan:"
     echo "  dlavie-dlc upload $MOD_NAME 0.0.1 --note 'Initial release'"
     ;;
+  upload-data)
+    # Upload data FIFA 16 (data inti atau sceneassets)
+    shift
+    $PYTHON "$WORK_DIR/bin/upload_game_data.py" "$@"
+    ;;
+  list-data)
+    # List asset data di release v26
+    $PYTHON "$WORK_DIR/bin/upload_game_data.py" --list
+    ;;
   help|--help|-h)
     echo "DLavie DLC Manager — Termux"
     echo ""
     echo "Commands:"
-    echo "  dlavie-dlc upload <mod_folder> <version> [--note '...']  Upload DLC baru"
-    echo "  dlavie-dlc list                                              List semua mod di manifest"
-    echo "  dlavie-dlc delete <mod_id> <version>                         Hapus versi dari manifest"
-    echo "  dlavie-dlc new <ModName>                                     Buat folder mod baru dari template"
-    echo "  dlavie-dlc help                                              Tampilkan help ini"
+    echo "  dlavie-dlc upload <mod_folder> <version> [--note '...']   Upload DLC mod baru"
+    echo "  dlavie-dlc list                                            List mod di manifest"
+    echo "  dlavie-dlc delete <mod_id> <version>                       Hapus versi mod"
+    echo "  dlavie-dlc new <ModName>                                   Buat folder mod baru"
+    echo "  dlavie-dlc upload-data <zip_file>                          Upload data inti FIFA 16 (replace lama)"
+    echo "  dlavie-dlc upload-data <zip_file> --sceneassets            Upload sceneassets (asset optional)"
+    echo "  dlavie-dlc list-data                                       List asset data di release v26"
+    echo "  dlavie-dlc help                                            Tampilkan help ini"
     echo ""
-    echo "Contoh workflow lengkap:"
+    echo "Contoh workflow DLC mod:"
     echo "  dlavie-dlc new DLC_MyFeature"
     echo "  # edit file di /sdcard/dlavie-dlc/mods/DLC_MyFeature/"
     echo "  dlavie-dlc upload DLC_MyFeature 1.0.0 --note 'Initial release'"
     echo "  dlavie-dlc list"
+    echo ""
+    echo "Contoh workflow upload data FIFA 16 baru:"
+    echo "  # Upload data inti (replace dlavie26-data.zip lama)"
+    echo "  dlavie-dlc upload-data /sdcard/Download/dlavie26-data.zip"
+    echo ""
+    echo "  # Upload sceneassets (asset baru, optional)"
+    echo "  dlavie-dlc upload-data /sdcard/Download/dlavie26-sceneassets.zip --sceneassets"
+    echo ""
+    echo "  # Cek status asset data"
+    echo "  dlavie-dlc list-data"
     echo ""
     echo "Working directory: /sdcard/dlavie-dlc"
     ;;
