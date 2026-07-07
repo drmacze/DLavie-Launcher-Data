@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-07T12:45:00Z",
+  "updated_at": "2026-07-07T13:05:04Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 209,
-    "latest_version_name": "7.9.40-manifest-update-fallback",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v209.apk",
+    "latest_version_code": 210,
+    "latest_version_name": "7.9.41-auto-update-workflow",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v210.apk",
     "release_notes": [
-      "v7.9.40: Manifest-based app update fallback (no SQL needed)",
-      "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system",
-      "v7.9.38: Manifest-based auto-update system for DLC mods"
+      "v7.9.41-auto-update-workflow: Latest build from F16-Launcher CI",
+      "v7.9.40: Manifest-based app update fallback",
+      "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
   },
   "game_data": {
