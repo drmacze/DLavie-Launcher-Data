@@ -1,7 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-07T13:05:10Z",
+  "updated_at": "2026-07-07T14:00:00Z",
   "launcher": {
     "min_version_code": 206,
     "latest_version_code": 210,
@@ -17,14 +17,15 @@
     "version": "v26",
     "package": "com.ea.gp.fifaworld",
     "target_activity": "com.ea.gp.fifaworld.fifa",
-    "files": [
+    "core_files": [
       {
         "type": "apk",
         "name": "DLavie26.apk",
         "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26.apk",
         "size": 34027637,
         "sha256": "acb0ce50554d13d6d36aa75e7e84ade69e52f4b130f8316af4505cc255acd176",
-        "note": "APK ORIGINAL dari ChatGPT. TIDAK dimodify. Signature intact. targetSdk=26 native."
+        "required": true,
+        "note": "APK ORIGINAL dari ChatGpt. TIDAK dimodify. Signature intact."
       },
       {
         "type": "obb",
@@ -32,7 +33,8 @@
         "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/main.13.com.ea.gp.fifaworld.obb",
         "size": 1376082760,
         "sha256": "fe3e66c5e8c804656d8ee9ca62ace64a1fe968669f5c397b23ce174b0b8c720c",
-        "obb_target_path": "Android/obb/com.ea.gp.fifaworld/"
+        "obb_target_path": "Android/obb/com.ea.gp.fifaworld/",
+        "required": true
       },
       {
         "type": "obb",
@@ -40,7 +42,8 @@
         "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/patch.26.com.ea.gp.fifaworld.obb",
         "size": 102869675,
         "sha256": "bdca1604e7fc8dc80d96d656ae0e21ff3bd1ccf75a62ecaab0109dd269ef38a",
-        "obb_target_path": "Android/obb/com.ea.gp.fifaworld/"
+        "obb_target_path": "Android/obb/com.ea.gp.fifaworld/",
+        "required": true
       },
       {
         "type": "data_zip",
@@ -48,7 +51,34 @@
         "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/dlavie26-data.zip",
         "size": 1440341039,
         "sha256": "4297a94017140497385a2ca1f6edade694c1e8e269e0751611e1bc29545bda85",
-        "extract_to": "Android/data/com.ea.gp.fifaworld/"
+        "extract_to": "Android/data/com.ea.gp.fifaworld/",
+        "required": true,
+        "note": "Data inti FIFA 16 (tanpa sceneassets HD). Berisi: cl.ini, ai.ini, data/flows, data/ux, data/db, audio, dll."
+      }
+    ],
+    "optional_files": [
+      {
+        "type": "data_zip",
+        "name": "dlavie26-sceneassets.zip",
+        "url": "PLACEHOLDER_UPLOAD_FIRST",
+        "size": 0,
+        "sha256": "",
+        "extract_to": "Android/data/com.ea.gp.fifaworld/files/data/sceneassets/",
+        "required": false,
+        "optional": true,
+        "description": "HD Sceneassets (faces, kits, balls, stadiums, climate). Optional \u2014 game tetap jalan tanpa ini, tapi visual tidak HD.",
+        "categories": [
+          "faces",
+          "kit",
+          "ball",
+          "stadium",
+          "climate",
+          "hair",
+          "shoe",
+          "body"
+        ],
+        "estimated_size_mb": 500,
+        "note": "User bisa pilih download atau tidak. Kalau download, extract ke data/sceneassets/"
       }
     ]
   },
