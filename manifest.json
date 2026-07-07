@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-07T11:45:00Z",
+  "updated_at": "2026-07-07T12:30:00Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 206,
-    "latest_version_name": "7.9.37-save-game-multi-mode-ui",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-debug.apk",
+    "latest_version_code": 208,
+    "latest_version_name": "7.9.39-integrity-analyzer",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v208.apk",
     "release_notes": [
-      "v7.9.37: Save Game multi-mode UI (Career / Tournament / Quick Match)",
-      "v7.9.36: DLC permission popup",
-      "v7.9.35: Save Game verified paths"
+      "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system",
+      "v7.9.38: Manifest-based auto-update system",
+      "v7.9.37: Save Game multi-mode UI (Career / Tournament / Quick Match)"
     ]
   },
   "game_data": {
