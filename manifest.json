@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
+  "updated_at": "2026-07-07T10:30:00Z",
+  "launcher": {
+    "min_version_code": 206,
+    "latest_version_code": 206,
+    "latest_version_name": "7.9.37-save-game-multi-mode-ui",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-debug.apk",
+    "release_notes": [
+      "v7.9.37: Save Game multi-mode UI (Career / Tournament / Quick Match)",
+      "v7.9.36: DLC permission popup",
+      "v7.9.35: Save Game verified paths"
+    ]
+  },
+  "game_data": {
+    "version": "v26",
+    "package": "com.ea.gp.fifaworld",
+    "target_activity": "com.ea.gp.fifaworld.fifa",
+    "files": [
+      {
+        "type": "apk",
+        "name": "DLavie26.apk",
+        "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26.apk",
+        "size": 34027637,
+        "sha256": "acb0ce50554d13d6d36aa75e7e84ade69e52f4b130f8316af4505cc255acd176",
+        "note": "APK ORIGINAL dari ChatGPT. TIDAK dimodify. Signature intact. targetSdk=26 native."
+      },
+      {
+        "type": "obb",
+        "name": "main.13.com.ea.gp.fifaworld.obb",
+        "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/main.13.com.ea.gp.fifaworld.obb",
+        "size": 1376082760,
+        "sha256": "fe3e66c5e8c804656d8ee9ca62ace64a1fe968669f5c397b23ce174b0b8c720c",
+        "obb_target_path": "Android/obb/com.ea.gp.fifaworld/"
+      },
+      {
+        "type": "obb",
+        "name": "patch.26.com.ea.gp.fifaworld.obb",
+        "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/patch.26.com.ea.gp.fifaworld.obb",
+        "size": 102869675,
+        "sha256": "bdca1604e7fc8dc80d96d656ae0e21ff3bd1ccf75a62ecaab0109dd269ef38a",
+        "obb_target_path": "Android/obb/com.ea.gp.fifaworld/"
+      },
+      {
+        "type": "data_zip",
+        "name": "dlavie26-data.zip",
+        "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/dlavie26-data.zip",
+        "size": 1440341039,
+        "sha256": "4297a94017140497385a2ca1f6edade694c1e8e269e0751611e1bc29545bda85",
+        "extract_to": "Android/data/com.ea.gp.fifaworld/"
+      }
+    ]
+  },
+  "mods": [
+    {
+      "id": "save-menu-enhancer",
+      "slug": "save-menu-enhancer",
+      "name": "Save Menu Enhancer",
+      "title": "DLC: Save Menu Enhancer v1.0.0",
+      "description": "Memperbaiki menu Save dan Load di FIFA 16 yang sebelumnya tidak berfungsi sebagai save game sungguhan. Save menu bawaan HANYA buka browser promosi, Load menu HANYA loading splash 150 tick. Mod ini ganti dengan dialog info Save/Load yang berguna.",
+      "category": "gameplay_enhancement",
+      "author": "DLavie Team",
+      "icon": "save",
+      "latest_version": "1.0.0",
+      "version_code": 9001,
+      "channel": "stable",
+      "published": true,
+      "critical": false,
+      "restart_game_required": false,
+      "risk_level": "low",
+      "min_launcher_version_code": 206,
+      "target_game_package": "com.ea.gp.fifaworld",
+      "released_at": "2026-07-07T10:30:00Z",
+      "body": "## Save Menu Enhancer v1.0.0\n\nMod ini memperbaiki menu **Save** dan **Load** di FIFA 16 yang sebelumnya tidak berfungsi sebagai save game sungguhan:\n- Menu Save bawaan HANYA membuka browser ke `davidoluwa.github.io` (promosi)\n- Menu Load bawaan HANYA menampilkan loading splash 150 tick lalu kembali\n\n### Fitur\n1. **Save Menu Berfungsi** — Ganti browser promosi dengan dialog info Save\n2. **Load Menu Berfungsi** — Ganti loading splash dengan dialog info Load\n3. **Entry Save/Load di Customize Menu** — CustomizeHub.nav sekarang mengekspos entry Save dan Load\n4. **Auto-Save Enhancement** — cl.ini di-patch dengan trigger halftime, fulltime, transfer, squad change\n5. **SaveInfo Helper Module** — `data/ux/Save/SaveInfo.lua` berisi fungsi helper shared\n\n### Cara Install\n1. Buka DLavie Launcher\n2. Pilih FIFA 16 > Game Detail > DLC tab\n3. Tap \"Save Menu Enhancer v1.0.0\" > **Update**\n4. Launcher akan: backup file asli → download ZIP → verify SHA-256 → extract ke game data\n5. Launch FIFA 16 > Customize menu > Save (atau Load)\n\n### Kompatibilitas\n- Android 11+\n- FIFA 16 v26 (targetSdk 26, APK original dari ChatGpt)\n- DLavie Launcher v7.9.37+\n- Tidak perlu root",
+      "release_notes": [
+        "Save menu sekarang menampilkan dialog info save (lokasi file, auto-save, tips backup)",
+        "Load menu sekarang menampilkan dialog info load (instruksi restore)",
+        "Entry Save/Load tampil di Customize menu (Settings dalam game)",
+        "Auto-save enhanced: trigger halftime, fulltime, transfer, squad change",
+        "SaveInfo.lua helper module ditambahkan"
+      ],
+      "known_issues": [],
+      "files_modified": [
+        "data/flows/mainflow/gamemodes/MainMenu/Customize/Save/SaveHub.lua",
+        "data/flows/mainflow/gamemodes/MainMenu/Customize/Load/LoadHub.lua",
+        "data/flows/mainflow/gamemodes/MainMenu/Customize/CustomizeHub.nav",
+        "cl.ini"
+      ],
+      "files_added": [
+        "data/ux/Save/SaveInfo.lua"
+      ],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "version_code": 9001,
+          "released_at": "2026-07-07T10:30:00Z",
+          "url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLC_SaveMenuEnhancer_v1.0.0.zip",
+          "sha256": "3504032111f0b108ed5d7551f17edf7c167e220a5152344a1a1c92476d9569b5",
+          "size": 20911,
+          "channel": "stable",
+          "critical": false
+        }
+      ]
+    }
+  ]
+}
