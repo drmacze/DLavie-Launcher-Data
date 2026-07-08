@@ -1,16 +1,16 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-09T00:30:00Z",
+  "updated_at": "2026-07-09T01:00:00Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 247,
-    "latest_version_name": "7.9.73-fix-update-check-manifest",
+    "latest_version_code": 248,
+    "latest_version_name": "7.9.74-test-update-popup",
     "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v247.apk",
     "release_notes": [
-      "v7.9.73: Fix update popup tidak muncul",
-      "v7.9.72: Forced fullscreen update popup dengan halftone + typing animation",
-      "v7.9.71: Cloud gaming UI iterasi 3 \u2014 premium console design"
+      "v7.9.74: Test update popup visibility",
+      "v7.9.73: Fix update check manifest URL",
+      "v7.9.72: Forced fullscreen update popup"
     ]
   },
   "game_data": {
