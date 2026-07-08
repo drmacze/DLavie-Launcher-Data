@@ -1,14 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-08T06:09:46Z",
+  "updated_at": "2026-07-08T06:20:15Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 230,
-    "latest_version_name": "7.9.64-profile-banner-portal-sync",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v230.apk",
+    "latest_version_code": 233,
+    "latest_version_name": "7.9.64-gamehub-console-design-fix3",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v233.apk",
     "release_notes": [
-      "v7.9.64-profile-banner-portal-sync: Latest build from F16-Launcher CI",
+      "v7.9.64-gamehub-console-design-fix3: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
       "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
