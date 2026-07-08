@@ -1,14 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-08T16:32:02Z",
+  "updated_at": "2026-07-08T16:46:54Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 241,
-    "latest_version_name": "7.9.70-cloud-gaming-iter3",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v241.apk",
+    "latest_version_code": 242,
+    "latest_version_name": "7.9.71-cloud-gaming-iter3-premium",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v242.apk",
     "release_notes": [
-      "v7.9.70-cloud-gaming-iter3: Latest build from F16-Launcher CI",
+      "v7.9.71-cloud-gaming-iter3-premium: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
       "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
