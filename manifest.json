@@ -1,13 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-09T14:58:12Z",
+  "updated_at": "2026-07-09T17:32:25Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 251,
-    "latest_version_name": "7.9.76-stable-signing-and-popup-snooze",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v251.apk",
+    "latest_version_code": 248,
+    "latest_version_name": "7.9.74-fix-update-popup-loop",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v248.apk",
     "release_notes": [
+      "ROLLBACK v7.9.76: CI-built APK missing assets — reverted to v248 (correct 25.83MB APK)",
       "v7.9.76-stable-signing-and-popup-snooze: Auto-built from commit 832576d",
       "v7.9.74: Fix update popup loop — LOCAL_VER pakai BuildConfig.VERSION_CODE",
       "v7.9.73: Fix manifest URL ke raw.githubusercontent.com",
