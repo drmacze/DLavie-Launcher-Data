@@ -1,14 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-11T18:39:44Z",
+  "updated_at": "2026-07-11T18:58:16Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 254,
-    "latest_version_name": "7.9.78-remove-hero-carousel",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v254.apk",
+    "latest_version_code": 255,
+    "latest_version_name": "7.9.78-debug-banner",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v255.apk",
     "release_notes": [
-      "v7.9.78-remove-hero-carousel: Latest build from F16-Launcher CI",
+      "v7.9.78-debug-banner: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
       "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
