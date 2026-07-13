@@ -1,14 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-13T21:03:14Z",
+  "updated_at": "2026-07-13T21:20:19Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 275,
-    "latest_version_name": "7.9.79-transition-on-top",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v275.apk",
+    "latest_version_code": 276,
+    "latest_version_name": "7.9.79-transition-hexagon-match-video",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v276.apk",
     "release_notes": [
-      "v7.9.79-transition-on-top: Latest build from F16-Launcher CI",
+      "v7.9.79-transition-hexagon-match-video: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
       "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
