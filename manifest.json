@@ -1,14 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-13T19:12:15Z",
+  "updated_at": "2026-07-13T19:44:25Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 268,
-    "latest_version_name": "7.9.79-gamehub-glass-transparent",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v268.apk",
+    "latest_version_code": 269,
+    "latest_version_name": "7.9.79-gamehub-immersive-drawer-download",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v269.apk",
     "release_notes": [
-      "v7.9.79-gamehub-glass-transparent: Latest build from F16-Launcher CI",
+      "v7.9.79-gamehub-immersive-drawer-download: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
       "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
