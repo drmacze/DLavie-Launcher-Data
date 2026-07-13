@@ -1,14 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-13T20:38:43Z",
+  "updated_at": "2026-07-13T20:51:05Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 273,
-    "latest_version_name": "7.9.79-pointerInput-block-touch",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v273.apk",
+    "latest_version_code": 274,
+    "latest_version_name": "7.9.79-transition-and-battery-icon",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v274.apk",
     "release_notes": [
-      "v7.9.79-pointerInput-block-touch: Latest build from F16-Launcher CI",
+      "v7.9.79-transition-and-battery-icon: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
       "v7.9.39: DLavie Integrity Analyzer \u2014 anti-piracy + cleanup system"
     ]
