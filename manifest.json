@@ -1,13 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-14T19:45:12Z",
+  "updated_at": "2026-07-14T21:01:45Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 278,
-    "latest_version_name": "7.9.80-gamehub-design-v278",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v278.apk",
+    "latest_version_code": 279,
+    "latest_version_name": "7.9.81-gamehub-design-system",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v279.apk",
     "release_notes": [
+      "v7.9.81-gamehub-design-system: Auto-released via GitHub Actions",
       "v7.9.80-gamehub-design-v278: Auto-released via GitHub Actions",
       "v7.9.79-transition-loading-messages: Latest build from F16-Launcher CI",
       "v7.9.40: Manifest-based app update fallback",
