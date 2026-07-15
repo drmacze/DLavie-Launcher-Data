@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-15T01:18:59Z",
+  "updated_at": "2026-07-15T01:47:06Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 286,
-    "latest_version_name": "7.9.88-gamehub-gemini-spec",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v286.apk",
+    "latest_version_code": 287,
+    "latest_version_name": "7.9.89-ps5-launcher",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v287.apk",
     "release_notes": [
+      "v7.9.89: PS5-style launcher — dark nav + landscape game carousel + PS blue accent",
       "v7.9.88: GameHub Gemini spec — dark mode + neon cyan + glassmorphism + hero carousel + swimlanes + fix back button",
       "v7.9.87-gamehub-main-menu: Auto-released via GitHub Actions",
       "v7.9.86-gamehub-lite-clone: GameHub redesign by Base44",
-      "v7.9.85: transparent bars + fix scroll + card animation",
-      "v7.9.84-gamehub-playstore-v2: detail flow + platform detection + Favorite + adaptive bg + glassmorphism"
+      "v7.9.85: transparent bars + fix scroll + card animation"
     ]
   },
   "game_data": {
