@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-15T00:45:02Z",
+  "updated_at": "2026-07-15T00:58:24Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 284,
-    "latest_version_name": "7.9.86-gamehub-lite-clone",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v284.apk",
+    "latest_version_code": 285,
+    "latest_version_name": "7.9.87-gamehub-main-menu",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v285.apk",
     "release_notes": [
+      "v7.9.87-gamehub-main-menu: Auto-released via GitHub Actions",
       "v7.9.86-gamehub-lite-clone: GameHub redesign by Base44",
       "v7.9.85: transparent bars + fix scroll + card animation",
       "v7.9.84-gamehub-playstore-v2: detail flow + platform detection + Favorite + adaptive bg + glassmorphism",
-      "v7.9.83-gamehub-exact-match: 100% match GameHub Guangzhou reference",
-      "v7.9.82-gamehub-design-merged: Auto-released via GitHub Actions"
+      "v7.9.83-gamehub-exact-match: 100% match GameHub Guangzhou reference"
     ]
   },
   "game_data": {
