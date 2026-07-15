@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-15T18:42:19Z",
+  "updated_at": "2026-07-15T19:28:40Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 291,
-    "latest_version_name": "7.9.93-delta-update-size",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v291.apk",
+    "latest_version_code": 292,
+    "latest_version_name": "7.9.94-gamehub-fullscreen",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v292.apk",
     "release_notes": [
+      "v7.9.94-gamehub-fullscreen: Auto-released via GitHub Actions",
       "v7.9.93-delta-update-size: Auto-released via GitHub Actions",
       "v7.9.92: Interactive check update + yellow warning toast",
       "v7.9.91-gamehub-card-polish: GameHub card polish by Replit",
-      "v7.9.90: Glassmorphism GameHub + update size info in popup",
-      "v7.9.89: PS5-style launcher — dark nav + landscape game carousel + PS blue accent"
+      "v7.9.90: Glassmorphism GameHub + update size info in popup"
     ]
   },
   "game_data": {
