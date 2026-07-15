@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-15T20:36:34Z",
+  "updated_at": "2026-07-15T21:20:19Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 294,
-    "latest_version_name": "7.9.96-gamehub-clean-fullscreen",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v294.apk",
+    "latest_version_code": 295,
+    "latest_version_name": "7.9.97-profile-glass-polish",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v295.apk",
     "release_notes": [
+      "v7.9.97-profile-glass-polish: Auto-released via GitHub Actions",
       "v7.9.96-gamehub-clean-fullscreen: Auto-released via GitHub Actions",
       "v7.9.95-ps5-card-share-system: Auto-released via GitHub Actions",
       "v7.9.94-gamehub-fullscreen: Auto-released via GitHub Actions",
-      "v7.9.93-delta-update-size: Auto-released via GitHub Actions",
-      "v7.9.92: Interactive check update + yellow warning toast"
+      "v7.9.93-delta-update-size: Auto-released via GitHub Actions"
     ]
   },
   "game_data": {
