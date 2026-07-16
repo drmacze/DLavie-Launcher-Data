@@ -1,12 +1,12 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-16T14:46:03Z",
+  "updated_at": "2026-07-16T15:19:50Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 300,
-    "latest_version_name": "8.0.02-modern-glassmorphism",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v300.apk",
+    "latest_version_code": 301,
+    "latest_version_name": "8.0.03-dev-bypass-maintenance",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v301.apk",
     "release_notes": [
       "v8.0.01-full-rebuild-ref: Auto-released via GitHub Actions",
       "v8.0.00-fix-update-flow: Auto-released via GitHub Actions",
