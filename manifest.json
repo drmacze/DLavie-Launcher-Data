@@ -1,12 +1,12 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-17T18:50:34Z",
+  "updated_at": "2026-07-17T19:05:46Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 307,
-    "latest_version_name": "8.0.09-lazy-scroll-carousel",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v307.apk",
+    "latest_version_code": 308,
+    "latest_version_name": "8.0.10-fix-swipe-gesture",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v308.apk",
     "release_notes": [
       "v8.0.07-tight-carousel: Auto-released via GitHub Actions",
       "v8.0.05-swipe-glow-sidebar-anim: Auto-released via GitHub Actions",
