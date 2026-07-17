@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-17T21:16:26Z",
+  "updated_at": "2026-07-17T21:38:26Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 311,
-    "latest_version_name": "8.0.13-gamehub-complete-redesign",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v311.apk",
+    "latest_version_code": 312,
+    "latest_version_name": "8.0.14-continue-replit-base",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v312.apk",
     "release_notes": [
+      "v8.0.14-continue-replit-base: Auto-released via GitHub Actions",
       "v8.0.13-gamehub-complete-redesign: Auto-released via GitHub Actions",
       "v8.0.12-glass-redesign: Auto-released via GitHub Actions",
       "v8.0.11-ps5-gamehub-v2: Auto-released via GitHub Actions",
-      "v8.0.07-tight-carousel: Auto-released via GitHub Actions",
-      "v8.0.05-swipe-glow-sidebar-anim: Auto-released via GitHub Actions"
+      "v8.0.07-tight-carousel: Auto-released via GitHub Actions"
     ]
   },
   "game_data": {
