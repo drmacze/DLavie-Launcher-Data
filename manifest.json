@@ -1,12 +1,12 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-17T22:42:57Z",
+  "updated_at": "2026-07-19T16:34:02Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 317,
-    "latest_version_name": "8.0.19-fix-orientation-icons",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v317.apk",
+    "latest_version_code": 318,
+    "latest_version_name": "8.0.20-polish-gamehub",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v318.apk",
     "release_notes": [
       "v8.0.19-fix-orientation-icons: Auto-released via GitHub Actions",
       "v8.0.15-merge-v311-features: Auto-released via GitHub Actions",
