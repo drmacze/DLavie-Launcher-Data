@@ -1,1 +1,41 @@
-{"message":"Service for this project is restricted due to the following violations: exceed_cached_egress_quota. The project owner must upgrade their plan or remove spend caps to restore service."}
+[
+  {
+    "id": 1,
+    "title": "DLavie F16 Launcher v324 \u2014 Fix News Beranda",
+    "body": "Versi v324 memperbaiki bug news dan slider yang hilang dari beranda launcher.\n\nPenyebab: file banner_slides.json dan news_posts.json di repository berisi pesan error Supabase (quota exceeded), sehingga NewsScreen gagal parse JSON.\n\nFix: Ganti file tersebut dengan JSON array valid berisi pengumuman resmi DLavie. Sekarang news dan slider akan tampil di beranda launcher.",
+    "footer_text": "Tim DLavie",
+    "image_url": "",
+    "label_type": "info",
+    "official": true,
+    "scheduled_at": null,
+    "published_at": "2026-07-19T23:50:00Z",
+    "created_at": "2026-07-19T23:50:00Z",
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "title": "Update Wajib v323+ \u2014 Popup Update ke Website",
+    "body": "Mulai v323, semua user dengan versi lama akan melihat popup 'Update Wajib!' merah yang tidak bisa di-dismiss.\n\nKlik tombol 'Install Latest Version' untuk membuka website DLavie dan download APK terbaru secara manual.\n\nSetelah download selesai, install APK baru tersebut \u2014 aplikasi lama akan otomatis terganti dengan versi terbaru.",
+    "footer_text": "Tim DLavie",
+    "image_url": "",
+    "label_type": "critical",
+    "official": true,
+    "scheduled_at": null,
+    "published_at": "2026-07-19T22:50:00Z",
+    "created_at": "2026-07-19T22:50:00Z",
+    "is_active": true
+  },
+  {
+    "id": 3,
+    "title": "Sistem Update GitHub-Only (v320+)",
+    "body": "Sejak v320, sistem update launcher sepenuhnya menggunakan GitHub manifest.json \u2014 tidak lagi bergantung pada Supabase yang sudah mencapai quota limit.\n\nKeuntungan:\n- Update popup lebih cepat (langsung cek manifest, tanpa Supabase timeout)\n- Lebih reliable (GitHub tidak akan kehabisan quota)\n- Source of truth tunggal: manifest.json di repository DLavie-Launcher-Data",
+    "footer_text": "Tim DLavie",
+    "image_url": "",
+    "label_type": "info",
+    "official": true,
+    "scheduled_at": null,
+    "published_at": "2026-07-19T17:00:00Z",
+    "created_at": "2026-07-19T17:00:00Z",
+    "is_active": true
+  }
+]
