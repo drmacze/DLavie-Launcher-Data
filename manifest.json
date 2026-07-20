@@ -1,13 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-20T01:29:17Z",
+  "updated_at": "2026-07-20T01:31:24Z",
   "launcher": {
     "min_version_code": 206,
     "latest_version_code": 324,
     "latest_version_name": "8.0.26-fix-news-beranda",
     "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v324.apk",
     "release_notes": [
+      "v8.0.26-fix-news-beranda: Fix news beranda hilang (v324)",
       "v8.0.26-fix-news-beranda: Auto-released via GitHub Actions",
       "v8.0.25-force-update-website: Fix news beranda hilang (v323)",
       "v8.0.25-force-update-website: Force update popup direct to DLavie website (v323)",
@@ -68,7 +69,7 @@
         "extract_to": "Android/data/com.ea.gp.fifaworld/files/data/sceneassets/",
         "required": false,
         "optional": true,
-        "description": "HD Sceneassets (faces, kits, balls, stadiums, climate). Optional — game tetap jalan tanpa ini, tapi visual tidak HD.",
+        "description": "HD Sceneassets (faces, kits, balls, stadiums, climate). Optional \u2014 game tetap jalan tanpa ini, tapi visual tidak HD.",
         "categories": [
           "faces",
           "kit",
@@ -104,10 +105,10 @@
       "min_launcher_version_code": 206,
       "target_game_package": "com.ea.gp.fifaworld",
       "released_at": "2026-07-07T17:00:00Z",
-      "body": "## Save Menu Enhancer v1.0.0\n\nMod ini memperbaiki menu **Save** dan **Load** di FIFA 16 yang sebelumnya tidak berfungsi sebagai save game sungguhan:\n- Menu Save bawaan HANYA membuka browser ke `davidoluwa.github.io` (promosi)\n- Menu Load bawaan HANYA menampilkan loading splash 150 tick lalu kembali\n\n### Fitur\n1. **Save Menu Berfungsi** — Ganti browser promosi dengan dialog info Save\n2. **Load Menu Berfungsi** — Ganti loading splash dengan dialog info Load\n3. **Entry Save/Load di Customize Menu** — CustomizeHub.nav sekarang mengekspos entry Save dan Load\n4. **Auto-Save Enhancement** — cl.ini di-patch dengan trigger halftime, fulltime, transfer, squad change\n5. **SaveInfo Helper Module** — `data/ux/Save/SaveInfo.lua` berisi fungsi helper shared\n\n### Cara Install\n1. Buka DLavie Launcher\n2. Pilih FIFA 16 > Game Detail > DLC tab\n3. Tap \"Save Menu Enhancer v1.0.0\" > **Update**\n4. Launcher akan: backup file asli → download ZIP → verify SHA-256 → extract ke game data\n5. Launch FIFA 16 > Customize menu > Save (atau Load)\n\n### Kompatibilitas\n- Android 11+\n- FIFA 16 v26 (targetSdk 26, APK original dari ChatGpt)\n- DLavie Launcher v7.9.37+\n- Tidak perlu root",
+      "body": "## Save Menu Enhancer v1.0.0\n\nMod ini memperbaiki menu **Save** dan **Load** di FIFA 16 yang sebelumnya tidak berfungsi sebagai save game sungguhan:\n- Menu Save bawaan HANYA membuka browser ke `davidoluwa.github.io` (promosi)\n- Menu Load bawaan HANYA menampilkan loading splash 150 tick lalu kembali\n\n### Fitur\n1. **Save Menu Berfungsi** \u2014 Ganti browser promosi dengan dialog info Save\n2. **Load Menu Berfungsi** \u2014 Ganti loading splash dengan dialog info Load\n3. **Entry Save/Load di Customize Menu** \u2014 CustomizeHub.nav sekarang mengekspos entry Save dan Load\n4. **Auto-Save Enhancement** \u2014 cl.ini di-patch dengan trigger halftime, fulltime, transfer, squad change\n5. **SaveInfo Helper Module** \u2014 `data/ux/Save/SaveInfo.lua` berisi fungsi helper shared\n\n### Cara Install\n1. Buka DLavie Launcher\n2. Pilih FIFA 16 > Game Detail > DLC tab\n3. Tap \"Save Menu Enhancer v1.0.0\" > **Update**\n4. Launcher akan: backup file asli \u2192 download ZIP \u2192 verify SHA-256 \u2192 extract ke game data\n5. Launch FIFA 16 > Customize menu > Save (atau Load)\n\n### Kompatibilitas\n- Android 11+\n- FIFA 16 v26 (targetSdk 26, APK original dari ChatGpt)\n- DLavie Launcher v7.9.37+\n- Tidak perlu root",
       "release_notes": [
         "v2.0.0: Improved Save UI with save file info + Launcher Save Manager link",
-        "v1.0.1: Test auto-update via Termux — deployed from server",
+        "v1.0.1: Test auto-update via Termux \u2014 deployed from server",
         "Save menu sekarang menampilkan dialog info save (lokasi file, auto-save, tips backup)",
         "Load menu sekarang menampilkan dialog info load (instruksi restore)",
         "Entry Save/Load tampil di Customize menu (Settings dalam game)",
