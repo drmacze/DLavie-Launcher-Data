@@ -1,0 +1,102 @@
+name: Promote Launcher v325
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/promote-launcher-v325.yml'
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: promote-launcher-v325
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify v325 APK is publicly downloadable
+        id: verify
+        shell: bash
+        env:
+          APK_URL: https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v325.apk
+        run: |
+          set +e
+          HTTP_CODE=$(curl -L -sS -o /dev/null -w '%{http_code}' \
+            --connect-timeout 15 --max-time 60 \
+            --retry 3 --retry-delay 5 --retry-all-errors \
+            "$APK_URL")
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+            echo "APK v325 tersedia (HTTP $HTTP_CODE)."
+          else
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            echo "APK v325 belum tersedia (HTTP $HTTP_CODE). Manifest tetap pada versi lama."
+          fi
+
+      - name: Promote manifest to v325
+        if: steps.verify.outputs.available == 'true'
+        shell: python
+        run: |
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          path = Path('manifest.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          launcher = manifest.setdefault('launcher', {})
+          current = int(launcher.get('latest_version_code', 0))
+
+          if current >= 325:
+              print(f'Manifest already at v{current}; no promotion required.')
+              raise SystemExit(0)
+
+          launcher['latest_version_code'] = 325
+          launcher['latest_version_name'] = '8.1.0'
+          launcher['apk_url'] = 'https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v325.apk'
+          notes = list(launcher.get('release_notes') or [])
+          new_notes = [
+              'v8.1.0: Infrastruktur data publik yang lebih stabil',
+              'v8.1.0: Peningkatan keamanan koneksi launcher',
+              'v8.1.0: Pembaruan tampilan dan sistem update',
+          ]
+          launcher['release_notes'] = new_notes + [note for note in notes if note not in new_notes][:2]
+          manifest['updated_at'] = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+          path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          print('Manifest promoted to launcher v325 / 8.1.0.')
+
+      - name: Validate manifest
+        if: steps.verify.outputs.available == 'true'
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
+          launcher = manifest['launcher']
+          assert launcher['latest_version_code'] >= 325
+          assert launcher['latest_version_name'] == '8.1.0'
+          assert launcher['apk_url'].endswith('DLavie26-Launcher-v325.apk')
+          print('Manifest validation passed.')
+          PY
+
+      - name: Commit manifest promotion
+        if: steps.verify.outputs.available == 'true'
+        shell: bash
+        run: |
+          if git diff --quiet -- manifest.json; then
+            echo 'No manifest change required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manifest.json
+          git commit -m 'chore(manifest): promote launcher v325 (8.1.0)'
+          git push
