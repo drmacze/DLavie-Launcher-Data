@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-30T02:24:00+07:00",
+  "mode": "github_read_only",
+  "privacy": {
+    "public_data_only": true,
+    "allows_user_credentials": false,
+    "allows_private_profiles": false,
+    "allows_access_tokens": false
+  },
+  "files": {
+    "manifest": "manifest.json",
+    "app_config": "app_config.json",
+    "banner_slides": "banner_slides.json",
+    "news_posts": "news_posts.json",
+    "notification_campaigns": "notification_campaigns.json",
+    "update_posts": "update_posts.json",
+    "official_feed": "official_feed.json"
+  },
+  "community": {
+    "mode": "read_only_until_secure_backend",
+    "reason": "GitHub public repositories cannot safely accept direct authenticated writes from an Android APK without exposing a write token."
+  }
+}
