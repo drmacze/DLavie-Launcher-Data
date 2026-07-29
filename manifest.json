@@ -1,13 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-29T23:18:05Z",
+  "updated_at": "2026-07-29T23:26:19Z",
   "launcher": {
     "min_version_code": 206,
     "latest_version_code": 326,
     "latest_version_name": "8.2.0",
     "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v326.apk",
     "release_notes": [
+      "v8.2.0: Portal account SSO and reliable Google login (v326)",
       "v8.2.0: Auto-released via GitHub Actions",
       "v8.0.26-fix-news-beranda: Fix news beranda hilang (v324)",
       "v8.0.26-fix-news-beranda: Auto-released via GitHub Actions",
