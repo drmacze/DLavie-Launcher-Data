@@ -1,0 +1,58 @@
+name: Validate Public Database JSON
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '*.json'
+      - '.github/workflows/validate-json.yml'
+  push:
+    branches: [main]
+    paths:
+      - '*.json'
+      - '.github/workflows/validate-json.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON syntax and expected root types
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          expected_arrays = {
+              'banner_slides.json',
+              'news_posts.json',
+              'notification_campaigns.json',
+              'update_posts.json',
+              'official_feed.json',
+          }
+          expected_objects = {
+              'manifest.json',
+              'public_database.json',
+              'app_config.json',
+          }
+
+          errors = []
+          for path in sorted(Path('.').glob('*.json')):
+              try:
+                  data = json.loads(path.read_text(encoding='utf-8'))
+              except Exception as exc:
+                  errors.append(f'{path}: invalid JSON: {exc}')
+                  continue
+
+              if path.name in expected_arrays and not isinstance(data, list):
+                  errors.append(f'{path}: expected array root')
+              if path.name in expected_objects and not isinstance(data, dict):
+                  errors.append(f'{path}: expected object root')
+
+          if errors:
+              raise SystemExit('\n'.join(errors))
+          print('All public database JSON files are valid.')
