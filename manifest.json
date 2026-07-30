@@ -1,20 +1,18 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-30T20:25:57Z",
+  "updated_at": "2026-07-30T23:43:02Z",
   "launcher": {
     "min_version_code": 206,
-    "latest_version_code": 331,
-    "latest_version_name": "8.5.1",
-    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v331.apk",
+    "latest_version_code": 332,
+    "latest_version_name": "8.6.0",
+    "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v332.apk",
     "release_notes": [
+      "v8.6.0: Auto-released via GitHub Actions",
       "v8.5.1: Clean modern startup screen and faster launcher loading (v331)",
       "v8.5.0: Guided Portal connection and clear secure account handoff (v330)",
       "v8.5.0: Auto-released via GitHub Actions",
-      "v8.4.1: Clean Portal connection screen and focused launcher onboarding (v329)",
-      "v8.4.1: Auto-released via GitHub Actions",
-      "v8.4.0: Professional maintenance control and clean launcher experience (v328)",
-      "v8.3.0: Auto-released via GitHub Actions"
+      "v8.4.1: Clean Portal connection screen and focused launcher onboarding (v329)"
     ]
   },
   "game_data": {
