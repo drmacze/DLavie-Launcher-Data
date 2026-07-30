@@ -21,10 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate JSON syntax and expected root types
+      - name: Validate JSON syntax and public-data contracts
         shell: python
         run: |
           import json
+          import urllib.parse
+          import urllib.request
           from pathlib import Path
 
           expected_arrays = {
@@ -41,9 +43,11 @@ jobs:
           }
 
           errors = []
+          loaded = {}
           for path in sorted(Path('.').glob('*.json')):
               try:
                   data = json.loads(path.read_text(encoding='utf-8'))
+                  loaded[path.name] = data
               except Exception as exc:
                   errors.append(f'{path}: invalid JSON: {exc}')
                   continue
@@ -53,6 +57,91 @@ jobs:
               if path.name in expected_objects and not isinstance(data, dict):
                   errors.append(f'{path}: expected object root')
 
+          slides = loaded.get('banner_slides.json')
+          if isinstance(slides, list):
+              allowed_extensions = {
+                  'image': {'.png', '.jpg', '.jpeg', '.webp'},
+                  'gif': {'.gif'},
+                  'video': {'.mp4', '.webm'},
+              }
+              expected_content_prefix = {
+                  'image': 'image/',
+                  'gif': 'image/',
+                  'video': 'video/',
+              }
+              seen_ids = set()
+              seen_orders = set()
+
+              for index, slide in enumerate(slides):
+                  label = f'banner_slides.json[{index}]'
+                  if not isinstance(slide, dict):
+                      errors.append(f'{label}: expected object')
+                      continue
+
+                  slide_id = str(slide.get('id', '')).strip()
+                  if not slide_id:
+                      errors.append(f'{label}: id is required')
+                  elif slide_id in seen_ids:
+                      errors.append(f'{label}: duplicate id {slide_id}')
+                  seen_ids.add(slide_id)
+
+                  order = slide.get('sort_order')
+                  if not isinstance(order, int) or order < 0:
+                      errors.append(f'{label}: sort_order must be a non-negative integer')
+                  elif order in seen_orders:
+                      errors.append(f'{label}: duplicate sort_order {order}')
+                  seen_orders.add(order)
+
+                  media_type = str(slide.get('media_type', '')).lower().strip()
+                  if media_type not in allowed_extensions:
+                      errors.append(f'{label}: unsupported media_type {media_type!r}')
+                      continue
+
+                  duration = slide.get('duration_seconds', 5)
+                  if not isinstance(duration, int) or duration not in range(1, 61):
+                      errors.append(f'{label}: duration_seconds must be between 1 and 60')
+
+                  media_url = str(slide.get('media_url', '')).strip()
+                  parsed = urllib.parse.urlparse(media_url)
+                  suffix = Path(parsed.path).suffix.lower()
+                  if parsed.scheme != 'https' or not parsed.netloc:
+                      errors.append(f'{label}: media_url must be an absolute HTTPS URL')
+                      continue
+                  if suffix not in allowed_extensions[media_type]:
+                      errors.append(
+                          f'{label}: {media_type} media_url must end with one of '
+                          f'{sorted(allowed_extensions[media_type])}, got {parsed.path!r}'
+                      )
+                      continue
+
+                  link_url = slide.get('link_url')
+                  if link_url is not None:
+                      link = urllib.parse.urlparse(str(link_url))
+                      if link.scheme != 'https' or not link.netloc:
+                          errors.append(f'{label}: link_url must be null or an absolute HTTPS URL')
+
+                  if slide.get('is_active') is False:
+                      continue
+
+                  try:
+                      request = urllib.request.Request(
+                          media_url,
+                          method='HEAD',
+                          headers={'User-Agent': 'DLavie-Public-Data-Validator'},
+                      )
+                      with urllib.request.urlopen(request, timeout=15) as response:
+                          status = response.status
+                          content_type = response.headers.get_content_type()
+                      if status < 200 or status >= 400:
+                          errors.append(f'{label}: media_url returned HTTP {status}')
+                      elif not content_type.startswith(expected_content_prefix[media_type]):
+                          errors.append(
+                              f'{label}: media_url returned {content_type!r}, '
+                              f'expected {expected_content_prefix[media_type]!r}'
+                          )
+                  except Exception as exc:
+                      errors.append(f'{label}: media_url is not reachable: {exc}')
+
           if errors:
               raise SystemExit('\n'.join(errors))
-          print('All public database JSON files are valid.')
+          print('All public database JSON files and banner media URLs are valid.')
