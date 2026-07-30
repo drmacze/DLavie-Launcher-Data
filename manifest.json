@@ -1,13 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-30T18:15:34Z",
+  "updated_at": "2026-07-30T18:21:37Z",
   "launcher": {
     "min_version_code": 206,
     "latest_version_code": 330,
     "latest_version_name": "8.5.0",
     "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v330.apk",
     "release_notes": [
+      "v8.5.0: Guided Portal connection and clear secure account handoff (v330)",
       "v8.5.0: Auto-released via GitHub Actions",
       "v8.4.1: Clean Portal connection screen and focused launcher onboarding (v329)",
       "v8.4.1: Auto-released via GitHub Actions",
