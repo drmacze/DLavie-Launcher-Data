@@ -1,12 +1,17 @@
 {
-  "schema_version": 1,
-  "updated_at": "2026-07-30T02:24:00+07:00",
+  "schema_version": 2,
+  "updated_at": "2026-07-30T09:36:00+07:00",
   "maintenance": {
+    "schema_version": 2,
     "enabled": false,
-    "title": "Pemeliharaan",
-    "message": "Layanan sedang dipelihara. Silakan coba lagi nanti.",
     "scope": "none",
-    "allow_offline_play": true
+    "status_label": "Pemeliharaan layanan",
+    "title": "Kami sedang meningkatkan DLavie",
+    "message": "Beberapa layanan sedang diperbarui untuk meningkatkan stabilitas dan pengalaman penggunaan. Silakan coba lagi beberapa saat lagi.",
+    "allow_offline_play": true,
+    "estimated_end_at": null,
+    "support_url": "https://drmacze.github.io/dlavie-web/#/issues",
+    "revision": 0
   },
   "features": {
     "public_news": true,
