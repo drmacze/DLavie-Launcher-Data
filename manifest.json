@@ -1,13 +1,14 @@
 {
   "schema_version": 3,
   "manifest_url": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/manifest.json",
-  "updated_at": "2026-07-30T23:43:02Z",
+  "updated_at": "2026-07-30T23:55:23Z",
   "launcher": {
     "min_version_code": 206,
     "latest_version_code": 332,
     "latest_version_name": "8.6.0",
     "apk_url": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v26/DLavie26-Launcher-v332.apk",
     "release_notes": [
+      "v8.6.0: Shared 10-language localization, Auto mode, account sync, and RTL support (v332)",
       "v8.6.0: Auto-released via GitHub Actions",
       "v8.5.1: Clean modern startup screen and faster launcher loading (v331)",
       "v8.5.0: Guided Portal connection and clear secure account handoff (v330)",
