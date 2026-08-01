@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 7,
-  "latestVersionName": "0.4.0-alpha",
+  "latestVersionCode": 8,
+  "latestVersionName": "0.5.0-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.4.0-alpha/DLavie-Client-0.4.0-alpha.apk",
-  "sha256": "aeb85797250b1177dc64a9db4145019cb5049a6123149e1022702e2ab67b3d32",
-  "notes": "Sistem akun roleplay: layar login dan registrasi, token terenkripsi Android Keystore, refresh sesi otomatis saat startup, serta handshake WebSocket dengan access token.",
-  "publishedAt": "2026-08-01T21:08:47Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.5.0-alpha/DLavie-Client-0.5.0-alpha.apk",
+  "sha256": "e5d095931ba6af49258dc0f13f3065a275a594b6e9e58c5c188dd12db9931b61",
+  "notes": "Sistem karakter roleplay: daftar dan pembuatan karakter per akun, pemilihan karakter, penyimpanan terenkripsi, serta handshake server yang memverifikasi kepemilikan karakter.",
+  "publishedAt": "2026-08-01T21:36:27Z"
 }
