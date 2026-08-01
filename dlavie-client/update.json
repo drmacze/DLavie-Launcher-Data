@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 6,
-  "latestVersionName": "0.3.2-alpha",
+  "latestVersionCode": 7,
+  "latestVersionName": "0.4.0-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.3.2-alpha/DLavie-Client-0.3.2-alpha.apk",
-  "sha256": "51ef01190676eb37155540554f0ba7654a997a6d30e6fa72580ba772f60c17f7",
-  "notes": "Perbaikan aplikasi berhenti: operasi updater dan validasi APK kini aman terhadap lifecycle/cancellation, request aktif dibatalkan saat layar ditutup, crash report lokal ditambahkan, dan stabilitas build ditingkatkan.",
-  "publishedAt": "2026-08-01T20:56:45Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.4.0-alpha/DLavie-Client-0.4.0-alpha.apk",
+  "sha256": "aeb85797250b1177dc64a9db4145019cb5049a6123149e1022702e2ab67b3d32",
+  "notes": "Sistem akun roleplay: layar login dan registrasi, token terenkripsi Android Keystore, refresh sesi otomatis saat startup, serta handshake WebSocket dengan access token.",
+  "publishedAt": "2026-08-01T21:08:47Z"
 }
