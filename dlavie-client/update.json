@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 4,
-  "latestVersionName": "0.3.0-alpha",
+  "latestVersionCode": 6,
+  "latestVersionName": "0.3.2-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.3.0-alpha/DLavie-Client-0.3.0-alpha.apk",
-  "sha256": "d4de5a1607378e6fbd7155080333dd6b0991b006cfa3ce176895aa91c1834b6f",
-  "notes": "Tampilan baru dengan navigasi Beranda, Library, Server, dan Aktivitas. Alamat contoh dihapus, validasi server diperketat, serta error jaringan kini ditampilkan dengan bahasa yang mudah dipahami.",
-  "publishedAt": "2026-08-01T14:15:24Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.3.2-alpha/DLavie-Client-0.3.2-alpha.apk",
+  "sha256": "51ef01190676eb37155540554f0ba7654a997a6d30e6fa72580ba772f60c17f7",
+  "notes": "Perbaikan aplikasi berhenti: operasi updater dan validasi APK kini aman terhadap lifecycle/cancellation, request aktif dibatalkan saat layar ditutup, crash report lokal ditambahkan, dan stabilitas build ditingkatkan.",
+  "publishedAt": "2026-08-01T20:56:45Z"
 }
