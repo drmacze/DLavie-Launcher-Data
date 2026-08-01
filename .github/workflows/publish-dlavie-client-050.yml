@@ -1,0 +1,72 @@
+name: Publish DLavie Client 0.5.0-alpha
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-dlavie-client-050.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified GitHub Actions artifact
+        run: |
+          curl --fail --location --retry 3 \
+            'https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-374c-81fa-9626-8d552ec5270d/raw?se=2026-08-01T21:40:37Z&sp=r&sv=2026-02-06&sr=b&scid=06afdd09-746b-50d3-ba8c-504d845afcd4&skoid=cb94e22a-e3df-4e6a-9e17-1696f40fa435&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T07:20:05Z&ske=2026-08-02T07:20:05Z&sks=b&skv=2026-02-06&sig=PBiLwna8JBQ%2B/mlruegjakZhb6%2BkxsiqNbBW9vn9acs%3D' \
+            --output artifact.zip
+          unzip -o artifact.zip -d artifact
+          test "$(sha256sum artifact/app-release.apk | awk '{print $1}')" = "e5d095931ba6af49258dc0f13f3065a275a594b6e9e58c5c188dd12db9931b61"
+          mv artifact/app-release.apk DLavie-Client-0.5.0-alpha.apk
+
+      - name: Publish release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.5.0-alpha >/dev/null 2>&1; then
+            gh release upload v0.5.0-alpha DLavie-Client-0.5.0-alpha.apk --clobber
+          else
+            gh release create v0.5.0-alpha DLavie-Client-0.5.0-alpha.apk \
+              --title "DLavie Client 0.5.0-alpha" \
+              --notes "Character milestone: account-bound roleplay character creation/selection, encrypted selected-character persistence, and ownership-validated WebSocket handshake."
+          fi
+
+      - name: Update public manifest and status
+        run: |
+          mkdir -p dlavie-client
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          published = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+          manifest = {
+              'latestVersionCode': 8,
+              'latestVersionName': '0.5.0-alpha',
+              'minimumSupportedVersionCode': 2,
+              'mandatory': False,
+              'apkUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.5.0-alpha/DLavie-Client-0.5.0-alpha.apk',
+              'sha256': 'e5d095931ba6af49258dc0f13f3065a275a594b6e9e58c5c188dd12db9931b61',
+              'notes': 'Sistem karakter roleplay: daftar dan pembuatan karakter per akun, pemilihan karakter, penyimpanan terenkripsi, serta handshake server yang memverifikasi kepemilikan karakter.',
+              'publishedAt': published,
+          }
+          status = {
+              'status': 'published',
+              'version': '0.5.0-alpha',
+              'versionCode': 8,
+              'sha256': manifest['sha256'],
+              'releaseUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.5.0-alpha',
+              'publishedAt': published,
+          }
+          open('dlavie-client/update.json', 'w').write(json.dumps(manifest, indent=2) + '\n')
+          open('dlavie-client/publish-status.json', 'w').write(json.dumps(status, indent=2) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dlavie-client/update.json dlavie-client/publish-status.json
+          git commit -m "release: publish DLavie Client 0.5.0-alpha"
+          git push
