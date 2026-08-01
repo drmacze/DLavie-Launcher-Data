@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 2,
-  "latestVersionName": "0.2.0-alpha",
+  "latestVersionCode": 3,
+  "latestVersionName": "0.2.1-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.2.0-alpha/DLavie-Client-0.2.0-alpha.apk",
-  "sha256": "a2cf473b5188d5b75aaf3980e51f71ff1c42a062c2c5e7583019e5d0399ad339",
-  "notes": "Game library Rockstar dan Netflix, validasi APK streaming, secure self-update, dan branding liquid-glass.",
-  "publishedAt": "2026-08-01T01:34:43Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.2.1-alpha/DLavie-Client-0.2.1-alpha.apk",
+  "sha256": "9c660dd3992eade2377cfc1539831c97a16771de632374ae3062e634a8b5139a",
+  "notes": "Pengecekan update otomatis kini menampilkan streaming text nyata: koneksi metadata, HTTP response, validasi manifest, dan perbandingan version code.",
+  "publishedAt": "2026-08-01T04:02:41Z"
 }
