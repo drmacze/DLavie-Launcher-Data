@@ -1,0 +1,72 @@
+name: Publish DLavie Client 0.6.1-alpha
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-dlavie-client-061.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified GitHub Actions artifact
+        run: |
+          curl --fail --location --retry 3 \
+            'https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-9124-81fa-9f3e-ad22083681bf/raw?se=2026-08-01T22:11:27Z&sp=r&sv=2026-02-06&sr=b&scid=56a26606-7957-5a17-b68c-2adf66c135e4&skoid=cb94e22a-e3df-4e6a-9e17-1696f40fa435&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T21:50:55Z&ske=2026-08-02T21:50:55Z&sks=b&skv=2026-02-06&sig=J6g8uYW/nFtvATzVjQSI93VbsXfct4bLUt8nW9YVxJo%3D' \
+            --output artifact.zip
+          unzip -o artifact.zip -d artifact
+          test "$(sha256sum artifact/app-release.apk | awk '{print $1}')" = "931ac0dce295628f382f32dc9042f53de931867993e160a783c4c65d32029730"
+          mv artifact/app-release.apk DLavie-Client-0.6.1-alpha.apk
+
+      - name: Publish release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.6.1-alpha >/dev/null 2>&1; then
+            gh release upload v0.6.1-alpha DLavie-Client-0.6.1-alpha.apk --clobber
+          else
+            gh release create v0.6.1-alpha DLavie-Client-0.6.1-alpha.apk \
+              --title "DLavie Client 0.6.1-alpha" \
+              --notes "Crash-recovery patch: previous uncaught crash is surfaced on next startup with continue/reset-session actions. Includes world transport and secure account/character foundations."
+          fi
+
+      - name: Update public manifest and status
+        run: |
+          mkdir -p dlavie-client
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          published = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+          manifest = {
+              'latestVersionCode': 10,
+              'latestVersionName': '0.6.1-alpha',
+              'minimumSupportedVersionCode': 2,
+              'mandatory': False,
+              'apkUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.6.1-alpha/DLavie-Client-0.6.1-alpha.apk',
+              'sha256': '931ac0dce295628f382f32dc9042f53de931867993e160a783c4c65d32029730',
+              'notes': 'Patch aplikasi berhenti: laporan crash lokal kini ditampilkan saat startup berikutnya, dengan pilihan lanjutkan atau reset sesi. Fondasi world transport, akun, dan karakter tetap disertakan.',
+              'publishedAt': published,
+          }
+          status = {
+              'status': 'published',
+              'version': '0.6.1-alpha',
+              'versionCode': 10,
+              'sha256': manifest['sha256'],
+              'releaseUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.6.1-alpha',
+              'publishedAt': published,
+          }
+          open('dlavie-client/update.json', 'w').write(json.dumps(manifest, indent=2) + '\n')
+          open('dlavie-client/publish-status.json', 'w').write(json.dumps(status, indent=2) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dlavie-client/update.json dlavie-client/publish-status.json
+          git commit -m "release: publish DLavie Client 0.6.1-alpha"
+          git push
