@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 3,
-  "latestVersionName": "0.2.1-alpha",
+  "latestVersionCode": 4,
+  "latestVersionName": "0.3.0-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.2.1-alpha/DLavie-Client-0.2.1-alpha.apk",
-  "sha256": "9c660dd3992eade2377cfc1539831c97a16771de632374ae3062e634a8b5139a",
-  "notes": "Pengecekan update otomatis kini menampilkan streaming text nyata: koneksi metadata, HTTP response, validasi manifest, dan perbandingan version code.",
-  "publishedAt": "2026-08-01T04:02:41Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.3.0-alpha/DLavie-Client-0.3.0-alpha.apk",
+  "sha256": "d4de5a1607378e6fbd7155080333dd6b0991b006cfa3ce176895aa91c1834b6f",
+  "notes": "Tampilan baru dengan navigasi Beranda, Library, Server, dan Aktivitas. Alamat contoh dihapus, validasi server diperketat, serta error jaringan kini ditampilkan dengan bahasa yang mudah dipahami.",
+  "publishedAt": "2026-08-01T14:15:24Z"
 }
