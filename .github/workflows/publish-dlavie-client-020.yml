@@ -14,12 +14,15 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Download signed artifact
+      - name: Checkout public release repository
+        uses: actions/checkout@v4
+
+      - name: Download and verify signed artifact
         env:
-          ARTIFACT_URL: "https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-a004-81fa-8e64-147d891d73fb/raw?se=2026-08-01T01:36:41Z&sp=r&sv=2026-02-06&sr=b&scid=10aee92d-c2b3-5343-804b-35941b4289e8&skoid=27fbae2c-124f-4566-a0d8-1b07a5a41c53&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T01:18:17Z&ske=2026-08-02T01:18:17Z&sks=b&skv=2026-02-06&sig=gM5xcthZoF4HIpH0pnirZPHNGrKZq2pBXvPOPla0WQA%3D"
+          ARTIFACT_URL: "https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-5de4-81fa-88c6-374f2f230563/raw?se=2026-08-01T01:38:58Z&sp=r&sv=2026-02-06&sr=b&scid=fbf42032-4c1b-5895-a549-0e67926490b9&skoid=27fbae2c-124f-4566-a0d8-1b07a5a41c53&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T01:24:37Z&ske=2026-08-02T01:24:37Z&sks=b&skv=2026-02-06&sig=SfJzUXsJkicJSmrJiRZ82IYDcdXVjApsMwzEevkhbg0%3D"
         run: |
           curl --fail --location "$ARTIFACT_URL" --output artifact.zip
-          unzip artifact.zip
+          unzip -o artifact.zip
           mv app-release.apk DLavie-Client-0.2.0-alpha.apk
           echo "a2cf473b5188d5b75aaf3980e51f71ff1c42a062c2c5e7583019e5d0399ad339  DLavie-Client-0.2.0-alpha.apk" | sha256sum --check -
 
@@ -37,3 +40,35 @@ jobs:
               --title "DLavie Client 0.2.0-alpha" \
               --notes "Signed Android alpha release with Rockstar/Netflix game library, validated APK selection, secure updater, and liquid-glass branding."
           fi
+
+      - name: Publish updater manifest and success marker
+        run: |
+          mkdir -p dlavie-client
+          PUBLISHED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          cat > dlavie-client/update.json <<EOF
+          {
+            "latestVersionCode": 2,
+            "latestVersionName": "0.2.0-alpha",
+            "minimumSupportedVersionCode": 2,
+            "mandatory": false,
+            "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.2.0-alpha/DLavie-Client-0.2.0-alpha.apk",
+            "sha256": "a2cf473b5188d5b75aaf3980e51f71ff1c42a062c2c5e7583019e5d0399ad339",
+            "notes": "Game library Rockstar dan Netflix, validasi APK streaming, secure self-update, dan branding liquid-glass.",
+            "publishedAt": "$PUBLISHED_AT"
+          }
+          EOF
+          cat > dlavie-client/publish-status.json <<EOF
+          {
+            "status": "published",
+            "version": "0.2.0-alpha",
+            "versionCode": 2,
+            "sha256": "a2cf473b5188d5b75aaf3980e51f71ff1c42a062c2c5e7583019e5d0399ad339",
+            "releaseUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.2.0-alpha",
+            "publishedAt": "$PUBLISHED_AT"
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dlavie-client/update.json dlavie-client/publish-status.json
+          git commit -m "release: publish DLavie Client 0.2.0-alpha manifest" || exit 0
+          git push
