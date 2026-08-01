@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 8,
-  "latestVersionName": "0.5.0-alpha",
+  "latestVersionCode": 9,
+  "latestVersionName": "0.6.0-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.5.0-alpha/DLavie-Client-0.5.0-alpha.apk",
-  "sha256": "e5d095931ba6af49258dc0f13f3065a275a594b6e9e58c5c188dd12db9931b61",
-  "notes": "Sistem karakter roleplay: daftar dan pembuatan karakter per akun, pemilihan karakter, penyimpanan terenkripsi, serta handshake server yang memverifikasi kepemilikan karakter.",
-  "publishedAt": "2026-08-01T21:36:27Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.6.0-alpha/DLavie-Client-0.6.0-alpha.apk",
+  "sha256": "1297cc3a574821ad39a0739684ed76aa34476f832066c6c874137014951ec21d",
+  "notes": "Fondasi transport multiplayer: snapshot world authoritative, spawn/transform/remove entity, interest management, anti-teleport, koreksi posisi server, serta kontrak GameBridge Android yang aman.",
+  "publishedAt": "2026-08-01T21:51:02Z"
 }
