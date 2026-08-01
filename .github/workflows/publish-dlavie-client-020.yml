@@ -1,0 +1,39 @@
+name: Publish DLavie Client 0.2.0-alpha
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-dlavie-client-020.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download signed artifact
+        env:
+          ARTIFACT_URL: "https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-a004-81fa-8e64-147d891d73fb/raw?se=2026-08-01T01:36:41Z&sp=r&sv=2026-02-06&sr=b&scid=10aee92d-c2b3-5343-804b-35941b4289e8&skoid=27fbae2c-124f-4566-a0d8-1b07a5a41c53&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T01:18:17Z&ske=2026-08-02T01:18:17Z&sks=b&skv=2026-02-06&sig=gM5xcthZoF4HIpH0pnirZPHNGrKZq2pBXvPOPla0WQA%3D"
+        run: |
+          curl --fail --location "$ARTIFACT_URL" --output artifact.zip
+          unzip artifact.zip
+          mv app-release.apk DLavie-Client-0.2.0-alpha.apk
+          echo "a2cf473b5188d5b75aaf3980e51f71ff1c42a062c2c5e7583019e5d0399ad339  DLavie-Client-0.2.0-alpha.apk" | sha256sum --check -
+
+      - name: Create or replace public release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: v0.2.0-alpha
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" DLavie-Client-0.2.0-alpha.apk DLavie-Client-release.sha256 --clobber
+          else
+            gh release create "$TAG" \
+              DLavie-Client-0.2.0-alpha.apk \
+              DLavie-Client-release.sha256 \
+              --title "DLavie Client 0.2.0-alpha" \
+              --notes "Signed Android alpha release with Rockstar/Netflix game library, validated APK selection, secure updater, and liquid-glass branding."
+          fi
