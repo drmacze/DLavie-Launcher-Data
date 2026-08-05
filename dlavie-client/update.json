@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 11,
-  "latestVersionName": "0.7.0-alpha",
+  "latestVersionCode": 12,
+  "latestVersionName": "0.7.1-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.7.0-alpha/DLavie-Client-0.7.0-alpha.apk",
-  "sha256": "eedb928ab890435277106ceaaffc1dd8335a56d6dd0eb09f9e154722d21677ab",
-  "notes": "GameBridge diagnostics: fingerprint build GTA, capability handshake, status adapter yang terlihat di launcher, serta interpolasi entity remote. Native adapter GTA belum diaktifkan sampai build exact tervalidasi.",
-  "publishedAt": "2026-08-05T12:13:20Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.7.1-alpha/DLavie-Client-0.7.1-alpha.apk",
+  "sha256": "f19807f6ad7bd7ed5f51e8fe706e538380ffd76aa3d402d729834f2dc0616874",
+  "notes": "Perbaikan teks hilang: aplikasi dikunci ke tema gelap, warna teks dan hint input dibuat eksplisit, serta seluruh dialog memakai permukaan gelap Material. Opsi pilihan game dan teks ketikan sekarang terlihat pada mode sistem terang maupun skin OEM.",
+  "publishedAt": "2026-08-05T14:35:00Z"
 }
