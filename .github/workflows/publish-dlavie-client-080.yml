@@ -1,0 +1,74 @@
+name: Publish DLavie Client 0.8.0-alpha
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-dlavie-client-080.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified Android artifact
+        run: |
+          curl --fail --location --retry 3 \
+            'https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-3df0-81fa-902c-1a681ee853d4/raw?se=2026-08-05T23:11:14Z&sp=r&sv=2026-02-06&sr=b&scid=7b1f154e-9d7b-59c4-addf-0b1e6cee687e&skoid=cb94e22a-e3df-4e6a-9e17-1696f40fa435&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-05T21:14:36Z&ske=2026-08-06T21:14:36Z&sks=b&skv=2026-02-06&sig=in6fEELgg0dGkakMz4YdX6SjZIQ/6ZBQ2c69GyPReiI%3D' \
+            --output artifact.zip
+          unzip -o artifact.zip -d artifact
+          test "$(sha256sum artifact/app-release.apk | awk '{print $1}')" = "a84d6e4825b4953ad1ae3ef3eb9c41937e8d91d192d4acec09768d95523bc216"
+          mv artifact/app-release.apk DLavie-Client-0.8.0-alpha.apk
+
+      - name: Publish release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.8.0-alpha >/dev/null 2>&1; then
+            gh release upload v0.8.0-alpha DLavie-Client-0.8.0-alpha.apk --clobber
+          else
+            gh release create v0.8.0-alpha DLavie-Client-0.8.0-alpha.apk \
+              --title "DLavie Client 0.8.0-alpha" \
+              --notes "Local Host milestone: embedded LAN WebSocket server, foreground hosting service, UDP server discovery, automatic LAN endpoint selection, private-network-only ws:// policy, and a dedicated DLavie Host Lokal launcher entry. Session data is temporary and native GTA GameBridge remains unavailable."
+          fi
+
+      - name: Update public updater manifest
+        run: |
+          mkdir -p dlavie-client
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+
+          published = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+          manifest = {
+              'latestVersionCode': 13,
+              'latestVersionName': '0.8.0-alpha',
+              'minimumSupportedVersionCode': 2,
+              'mandatory': False,
+              'apkUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.8.0-alpha/DLavie-Client-0.8.0-alpha.apk',
+              'sha256': 'a84d6e4825b4953ad1ae3ef3eb9c41937e8d91d192d4acec09768d95523bc216',
+              'notes': 'Mode Host Lokal: server WebSocket tertanam, discovery LAN otomatis, foreground service, pemilihan endpoint lokal, dan kebijakan ws:// khusus jaringan privat.',
+              'publishedAt': published,
+          }
+          status = {
+              'status': 'published',
+              'version': '0.8.0-alpha',
+              'versionCode': 13,
+              'sha256': manifest['sha256'],
+              'releaseUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.8.0-alpha',
+              'publishedAt': published,
+          }
+          open('dlavie-client/update.json', 'w').write(json.dumps(manifest, indent=2) + '\n')
+          open('dlavie-client/publish-status.json', 'w').write(json.dumps(status, indent=2) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dlavie-client/update.json dlavie-client/publish-status.json
+          git commit -m "release: publish DLavie Client 0.8.0-alpha"
+          git push
