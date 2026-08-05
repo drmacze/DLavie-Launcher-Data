@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 10,
-  "latestVersionName": "0.6.1-alpha",
+  "latestVersionCode": 11,
+  "latestVersionName": "0.7.0-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.6.1-alpha/DLavie-Client-0.6.1-alpha.apk",
-  "sha256": "931ac0dce295628f382f32dc9042f53de931867993e160a783c4c65d32029730",
-  "notes": "Patch aplikasi berhenti: laporan crash lokal kini ditampilkan saat startup berikutnya, dengan pilihan lanjutkan atau reset sesi. Fondasi world transport, akun, dan karakter tetap disertakan.",
-  "publishedAt": "2026-08-01T22:07:24Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.7.0-alpha/DLavie-Client-0.7.0-alpha.apk",
+  "sha256": "eedb928ab890435277106ceaaffc1dd8335a56d6dd0eb09f9e154722d21677ab",
+  "notes": "GameBridge diagnostics: fingerprint build GTA, capability handshake, status adapter yang terlihat di launcher, serta interpolasi entity remote. Native adapter GTA belum diaktifkan sampai build exact tervalidasi.",
+  "publishedAt": "2026-08-05T12:13:20Z"
 }
