@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 13,
-  "latestVersionName": "0.8.0-alpha",
+  "latestVersionCode": 14,
+  "latestVersionName": "0.8.1-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.8.0-alpha/DLavie-Client-0.8.0-alpha.apk",
-  "sha256": "a84d6e4825b4953ad1ae3ef3eb9c41937e8d91d192d4acec09768d95523bc216",
-  "notes": "Mode Host Lokal: server WebSocket tertanam, discovery LAN otomatis, foreground service, pemilihan endpoint lokal, dan kebijakan ws:// khusus jaringan privat.",
-  "publishedAt": "2026-08-05T23:07:14Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.8.1-alpha/DLavie-Client-0.8.1-alpha.apk",
+  "sha256": "2021219e055176f65107df03d59d461f90fa55f4d353de7895e5456b090dd586",
+  "notes": "Stabilisasi LAN maksimal: PIN dan kapasitas server, QR/kode join, player list live + kick, ping/uptime/traffic metrics, reconnect otomatis, discovery yang lebih aman, serta Host Lokal terintegrasi ke aplikasi utama.",
+  "publishedAt": "2026-08-06T01:55:17Z"
 }
