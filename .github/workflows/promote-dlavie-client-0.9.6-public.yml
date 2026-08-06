@@ -1,0 +1,68 @@
+name: Promote DLavie Client 0.9.6 Public
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/promote-dlavie-client-0.9.6-public.yml
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout launcher data
+        uses: actions/checkout@v4
+
+      - name: Verify public APK
+        id: verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk"
+          if ! curl --fail --silent --show-error --location "$URL" --output /tmp/DLavie-Client-0.9.6-alpha.apk; then
+            echo "APK publik 0.9.6 belum tersedia."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ACTUAL=$(sha256sum /tmp/DLavie-Client-0.9.6-alpha.apk | cut -d' ' -f1)
+          EXPECTED="42a0e41f5af7888effdc5b33ceb90b17dfb273d65ec6d5942be5f898e3c42340"
+          test "$ACTUAL" = "$EXPECTED"
+          test -s /tmp/DLavie-Client-0.9.6-alpha.apk
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
+      - name: Publish launcher manifest
+        if: steps.verify.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dlavie-client
+          cat > dlavie-client/update.json <<'EOF'
+          {
+            "latestVersionCode": 21,
+            "latestVersionName": "0.9.6-alpha",
+            "minimumSupportedVersionCode": 2,
+            "mandatory": false,
+            "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk",
+            "sha256": "42a0e41f5af7888effdc5b33ceb90b17dfb273d65ec6d5942be5f898e3c42340",
+            "notes": "Menambahkan native agent arm64 read-only untuk exact build Netflix 1.72.42919648. Agent memetakan pointer CJ, posisi, velocity, dan heading dengan verifikasi offset simbol. Agent belum dimuat ke proses GTA dan remote ped tetap nonaktif.",
+            "publishedAt": "2026-08-06T22:51:57Z"
+          }
+          EOF
+          rm -f .github/workflows/promote-dlavie-client-0.9.6-public.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dlavie-client/update.json .github/workflows/promote-dlavie-client-0.9.6-public.yml
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "release: promote DLavie Client 0.9.6-alpha"
+          git push origin main
