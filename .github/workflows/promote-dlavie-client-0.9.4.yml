@@ -1,6 +1,11 @@
 name: Promote DLavie Client 0.9.4
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/promote-dlavie-client-0.9.4.yml
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
