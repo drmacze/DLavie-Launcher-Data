@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 16,
-  "latestVersionName": "0.9.1-alpha",
+  "latestVersionCode": 21,
+  "latestVersionName": "0.9.6-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.1-alpha/DLavie-Client-0.9.1-alpha.apk",
-  "sha256": "f8ea2da2cb8b2814b94cca19d0d9cd6e59c39a184f723ddbcb9d0f804de64cb2",
-  "notes": "GameBridge Research untuk exact build Netflix 1.72.42919648 arm64: parser ELF read-only, GNU build ID, dependency native, Known Build registry, self-test keamanan, serta ekspor laporan JSON tanpa APK/aset/memory dump. Hook native tetap nonaktif.",
-  "publishedAt": "2026-08-06T15:00:50Z"
+  "apkUrl": "https://dlavie-client-releases-dlavie.vercel.app/releases/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk",
+  "sha256": "fba9362379fd930f84305fd4b1b74d54a4c5e93668616a8dc0662873880dedf2",
+  "notes": "Menambahkan native agent arm64 read-only untuk exact build Netflix 1.72.42919648. Agent memetakan pointer CJ, posisi, velocity, dan heading dengan verifikasi offset simbol. Agent belum dimuat ke proses GTA dan remote ped tetap nonaktif.",
+  "publishedAt": "2026-08-06T23:55:12Z"
 }
