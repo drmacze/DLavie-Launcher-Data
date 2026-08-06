@@ -1,8 +1,8 @@
 {
   "status": "published",
-  "version": "0.9.0-alpha",
-  "versionCode": 15,
-  "sha256": "7e9206c4feb11428ffd41e561ef2ec355ae900df131e4c75f80cbd1f3c07c875",
-  "releaseUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.9.0-alpha",
-  "publishedAt": "2026-08-06T13:55:30Z"
+  "version": "0.9.1-alpha",
+  "versionCode": 16,
+  "sha256": "f8ea2da2cb8b2814b94cca19d0d9cd6e59c39a184f723ddbcb9d0f804de64cb2",
+  "releaseUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.9.1-alpha",
+  "publishedAt": "2026-08-06T15:00:50Z"
 }
