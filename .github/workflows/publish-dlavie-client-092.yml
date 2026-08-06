@@ -1,0 +1,73 @@
+name: Publish DLavie Client 0.9.2-alpha
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish-dlavie-client-092.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and verify signed artifact
+        run: |
+          curl --fail --location --retry 3 \
+            'https://sdmntprseasia.oaiusercontent.com/files/00000000-8cfc-8207-969d-2749ca542924/raw?se=2026-08-06T18%3A02%3A52Z&sp=r&sv=2026-02-06&sr=b&scid=4bef1a7d-7140-5044-a92a-288a5cb6b93b&skoid=5e5afa93-cb2e-42ad-a58a-830b5b446f03&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-06T05%3A51%3A23Z&ske=2026-08-07T05%3A51%3A23Z&sks=b&skv=2026-02-06&sig=U36gS/3XxhmZST4SyYGrmEADVqwbW8rhvx6V/ieAerU%3D' \
+            --output artifact.zip
+          unzip -o artifact.zip -d artifact
+          test "$(sha256sum artifact/app-release.apk | awk '{print $1}')" = "aaee205dfff20c79bccfcb345d2e1789fd18b55015c7d081d46c52e7462bab31"
+          mv artifact/app-release.apk DLavie-Client-0.9.2-alpha.apk
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.9.2-alpha >/dev/null 2>&1; then
+            gh release upload v0.9.2-alpha DLavie-Client-0.9.2-alpha.apk --clobber
+          else
+            gh release create v0.9.2-alpha DLavie-Client-0.9.2-alpha.apk \
+              --title "DLavie Client 0.9.2-alpha" \
+              --notes "Exact Netflix research build r2: corrected signer matching, strict APK/libUE4/build-ID/library-count gates, section-table ELF dynamic fallback, schema v2 research report, and safety-locked adapter manifest. Native hooks remain disabled."
+          fi
+
+      - name: Update updater manifest
+        run: |
+          mkdir -p dlavie-client
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          published = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+          sha = 'aaee205dfff20c79bccfcb345d2e1789fd18b55015c7d081d46c52e7462bab31'
+          manifest = {
+            'latestVersionCode': 17,
+            'latestVersionName': '0.9.2-alpha',
+            'minimumSupportedVersionCode': 2,
+            'mandatory': False,
+            'apkUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.2-alpha/DLavie-Client-0.9.2-alpha.apk',
+            'sha256': sha,
+            'notes': 'Memperbaiki exact matcher Known Build Netflix, menambah pengunci APK/libUE4/GNU build ID/jumlah library, fallback ELF .dynamic/.dynstr, report schema v2, dan adapter research manifest. Hook native tetap nonaktif.',
+            'publishedAt': published,
+          }
+          status = {
+            'status': 'published',
+            'version': '0.9.2-alpha',
+            'versionCode': 17,
+            'sha256': sha,
+            'releaseUrl': 'https://github.com/drmacze/DLavie-Launcher-Data/releases/tag/v0.9.2-alpha',
+            'publishedAt': published,
+          }
+          open('dlavie-client/update.json','w').write(json.dumps(manifest, indent=2)+'\n')
+          open('dlavie-client/publish-status.json','w').write(json.dumps(status, indent=2)+'\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dlavie-client/update.json dlavie-client/publish-status.json
+          git commit -m "release: publish DLavie Client 0.9.2-alpha"
+          git push
