@@ -71,3 +71,5 @@ jobs:
           git add dlavie-client/update.json dlavie-client/publish-status.json
           git commit -m "release: publish DLavie Client 0.9.2-alpha"
           git push
+
+# publication trigger 2
