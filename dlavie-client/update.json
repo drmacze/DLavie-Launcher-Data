@@ -3,7 +3,7 @@
   "latestVersionName": "0.9.6-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://dlavie-client-releases-dlavie.vercel.app/releases/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk",
+  "apkUrl": "https://raw.githubusercontent.com/drmacze/DLavie-Launcher-Data/main/dlavie-client/releases/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk",
   "sha256": "fba9362379fd930f84305fd4b1b74d54a4c5e93668616a8dc0662873880dedf2",
   "notes": "Menambahkan native agent arm64 read-only untuk exact build Netflix 1.72.42919648. Agent memetakan pointer CJ, posisi, velocity, dan heading dengan verifikasi offset simbol. Agent belum dimuat ke proses GTA dan remote ped tetap nonaktif.",
   "publishedAt": "2026-08-06T23:55:12Z"
