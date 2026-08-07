@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 24,
-  "latestVersionName": "0.9.9-alpha",
+  "latestVersionCode": 25,
+  "latestVersionName": "0.9.10-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.9-alpha/DLavie-Client-0.9.9-alpha.apk",
-  "sha256": "504eb54a82bb06c9a93349a30f9b64b1ac43f762596b2fd7fbf7938eea5c2268",
-  "notes": "Hotfix loader untuk error Missing META-INF/MANIFEST.MF. APK riset sekarang ditandatangani dengan signature v1/JAR, v2, dan v3 serta tetap fail-closed.",
-  "publishedAt": "2026-08-07T03:25:32Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.10-alpha/DLavie-Client-0.9.10-alpha.apk",
+  "sha256": "5e500f80e92517b090da5b7f73201624a5555fa3a1cafec3fa119e7186b9aedf",
+  "notes": "Memperbaiki kegagalan Failed to sign using signer DLAVIE pada beberapa ROM dengan adaptor AndroidKeyStore khusus. Loader tetap menggunakan signature v1/JAR, v2, dan v3 serta sekarang menyediakan laporan cause lengkap saat gagal.",
+  "publishedAt": "2026-08-07T03:51:57Z"
 }
