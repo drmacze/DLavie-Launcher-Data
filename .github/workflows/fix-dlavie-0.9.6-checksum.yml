@@ -1,0 +1,96 @@
+name: Fix DLavie 0.9.6 Public Checksum
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/fix-dlavie-0.9.6-checksum.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  republish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TAG: v0.9.6-alpha
+      APK_NAME: DLavie-Client-0.9.6-alpha.apk
+      APK_PATH: dlavie-client/releases/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk
+      EXPECTED_SHA: fba9362379fd930f84305fd4b1b74d54a4c5e93668616a8dc0662873880dedf2
+      EXPECTED_SIZE: '6123468'
+      PUBLIC_URL: https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk
+
+    steps:
+      - name: Checkout launcher data
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify source APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "$APK_PATH"
+          test "$(stat -c%s "$APK_PATH")" = "$EXPECTED_SIZE"
+          echo "$EXPECTED_SHA  $APK_PATH" | sha256sum --check --strict
+
+      - name: Replace public GitHub release asset
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release delete "$TAG" --cleanup-tag --yes --repo "$GITHUB_REPOSITORY" || true
+          gh release create "$TAG" "$APK_PATH#$APK_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target main \
+            --title "DLavie Client 0.9.6-alpha" \
+            --notes "Signed Android client release. versionCode 21, versionName 0.9.6-alpha, SHA-256 $EXPECTED_SHA."
+
+      - name: Verify anonymous public download bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f /tmp/public.apk
+          for attempt in $(seq 1 12); do
+            if curl --fail --silent --show-error --location \
+              --header 'Accept-Encoding: identity' \
+              --output /tmp/public.apk "$PUBLIC_URL"; then
+              if [ "$(stat -c%s /tmp/public.apk)" = "$EXPECTED_SIZE" ] && \
+                 echo "$EXPECTED_SHA  /tmp/public.apk" | sha256sum --check --strict; then
+                exit 0
+              fi
+            fi
+            rm -f /tmp/public.apk
+            sleep 5
+          done
+          echo "Public release asset did not match expected APK bytes" >&2
+          exit 1
+
+      - name: Publish corrected manifest and clean temporary files
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > dlavie-client/update.json <<'EOF'
+          {
+            "latestVersionCode": 21,
+            "latestVersionName": "0.9.6-alpha",
+            "minimumSupportedVersionCode": 2,
+            "mandatory": false,
+            "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.6-alpha/DLavie-Client-0.9.6-alpha.apk",
+            "sha256": "fba9362379fd930f84305fd4b1b74d54a4c5e93668616a8dc0662873880dedf2",
+            "notes": "Menambahkan native agent arm64 read-only untuk exact build Netflix 1.72.42919648. Agent memetakan pointer CJ, posisi, velocity, dan heading dengan verifikasi offset simbol. Agent belum dimuat ke proses GTA dan remote ped tetap nonaktif.",
+            "publishedAt": "2026-08-07T00:09:00Z"
+          }
+          EOF
+          rm -f "$APK_PATH"
+          rmdir --ignore-fail-on-non-empty "$(dirname "$APK_PATH")" || true
+          rm -f .github/workflows/fix-dlavie-0.9.6-checksum.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A dlavie-client .github/workflows/fix-dlavie-0.9.6-checksum.yml
+          git commit -m "fix: use verified DLavie 0.9.6 release asset"
+          git push origin main
