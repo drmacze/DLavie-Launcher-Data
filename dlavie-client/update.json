@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 25,
-  "latestVersionName": "0.9.10-alpha",
+  "latestVersionCode": 26,
+  "latestVersionName": "0.9.11-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.10-alpha/DLavie-Client-0.9.10-alpha.apk",
-  "sha256": "5e500f80e92517b090da5b7f73201624a5555fa3a1cafec3fa119e7186b9aedf",
-  "notes": "Memperbaiki kegagalan Failed to sign using signer DLAVIE pada beberapa ROM dengan adaptor AndroidKeyStore khusus. Loader tetap menggunakan signature v1/JAR, v2, dan v3 serta sekarang menyediakan laporan cause lengkap saat gagal.",
-  "publishedAt": "2026-08-07T03:51:57Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.11-alpha/DLavie-Client-0.9.11-alpha.apk",
+  "sha256": "3e8b64e2c121602cd67ed856ad001935a4e5c69f3e0bc88eaa19126c4b953c6a",
+  "notes": "Memperbaiki kegagalan SHA1withRSA pada AndroidKeyStore. Loader membuat key lokal baru dengan izin SHA-1/SHA-256/SHA-512 dan melakukan preflight SHA1withRSA + SHA256withRSA sebelum menandatangani APK.",
+  "publishedAt": "2026-08-07T11:45:21Z"
 }
