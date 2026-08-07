@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 23,
-  "latestVersionName": "0.9.8-alpha",
+  "latestVersionCode": 24,
+  "latestVersionName": "0.9.9-alpha",
   "minimumSupportedVersionCode": 2,
   "mandatory": false,
-  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.8-alpha/DLavie-Client-0.9.8-alpha.apk",
-  "sha256": "fb8a4d8751f933a3355568ba75f632731e92f4b5c6abde3ccdf9170fe6a4b922",
-  "notes": "Menambahkan exact-build loader lokal untuk target Netflix 1.72.42919648, bootstrap DEX, native runtime bridge read-only, signing AndroidKeyStore, validasi SHA-256/signer/build ID, dan dukungan alignment 16 KB. Build ini masih tahap riset dan belum lolos validasi perangkat fisik.",
-  "publishedAt": "2026-08-07T02:59:06Z"
+  "apkUrl": "https://github.com/drmacze/DLavie-Launcher-Data/releases/download/v0.9.9-alpha/DLavie-Client-0.9.9-alpha.apk",
+  "sha256": "504eb54a82bb06c9a93349a30f9b64b1ac43f762596b2fd7fbf7938eea5c2268",
+  "notes": "Hotfix loader untuk error Missing META-INF/MANIFEST.MF. APK riset sekarang ditandatangani dengan signature v1/JAR, v2, dan v3 serta tetap fail-closed.",
+  "publishedAt": "2026-08-07T03:25:32Z"
 }
